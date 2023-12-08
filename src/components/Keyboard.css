@@ -3,7 +3,7 @@
 }
 
 .keyboard-row {
-    @apply flex flex-row gap-2;
+    @apply flex flex-row gap-2 font-bold;
 }
 
 .keyboard-key {
@@ -12,5 +12,6 @@
 }
 
 .key-pressed {
+    filter: drop-shadow(0 0 8px rgba(227, 208, 134, 0.8));
     background-color: #4d4d4d;
 }

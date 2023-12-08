@@ -4,13 +4,6 @@ import {Howl} from 'howler';
 import {equinoxMappingSet1, SongMappingFactory} from "@src/common/songs-mapping.ts";
 
 export default function Keyboard() {
-  // const [keyboardKeys] = React.useState([
-  //   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='],
-  //   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'],
-  //   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Enter'],
-  //   ['Z', 'X', 'C', 'V' ,'B', 'N', 'M', ',', '.', '/', 'Shift', '']
-  // ])
-
   const [keyToCode] = React.useState<Record<string, string>>({
     '1': 'Digit1',
     '2': 'Digit2',
@@ -77,6 +70,8 @@ export default function Keyboard() {
     equinox[key].play()
   }
 
+  console.log(pressedKeys)
+
   const handleKeyDown = (event: KeyboardEvent) => {
     event.preventDefault();
     console.log(event.keyCode, ' = ', event.code)
@@ -94,10 +89,7 @@ export default function Keyboard() {
 
   const handleKeyUp = (event: KeyboardEvent) => {
     event.preventDefault();
-
-    setPressedKeys((prevKeys) => prevKeys.filter((pressedKey) =>
-      pressedKey !== (prevKeys.includes('Shift') && event.code !== 'Shift' ? secondaryKeysMapping[event.code] : event.code)
-    ));
+    setPressedKeys((prevKeys) => prevKeys.filter((pressedKey) => pressedKey !== event.code));
   };
 
   // console.log(pressedKeys)
@@ -122,22 +114,30 @@ export default function Keyboard() {
     };
   }, [equinox])
 
+  function rowsOfKeys() {
+    const keys = Object.keys(keyToCode);
+    return [
+      keys.slice(0, 12),
+      keys.slice(12, 24),
+      keys.slice(24, 36),
+      keys.slice(36,),
+    ]
+  }
 
   return (
     <>
       <div className="keyboard">
-        {Array(4).fill(null).map((_, rowIndex) =>
+        {rowsOfKeys().map((row, rowIndex) =>
           <div key={rowIndex} className="keyboard-row">
             {
-              Array(12).fill(null).map((_, columnIndex) => {
-                const keyIndex = rowIndex * 12 + columnIndex;
-                const key = Object.keys(keyToCode)[keyIndex];
-                return (
-                  <div key={keyIndex} className={`keyboard-key ${pressedKeys.includes(keyToCode[key]) ? 'key-pressed' : ''}`}>
-                    <b>{key}</b>
-                  </div>
-                )
-              })
+              row.map((key, columnIndex) =>
+                <div
+                  key={columnIndex}
+                  className={`keyboard-key ${pressedKeys.includes(keyToCode[key]) ? 'key-pressed' : ''}`}
+                >
+                  {key}
+                </div>
+              )
             }
           </div>
         )}
