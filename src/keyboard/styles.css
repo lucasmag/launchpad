@@ -15,3 +15,7 @@
     filter: drop-shadow(0 0 8px rgba(227, 208, 134, 0.8));
     background-color: #4d4d4d;
 }
+
+.current-key-set {
+    background-color: #3f3f3f;
+}

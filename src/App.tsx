@@ -1,5 +1,5 @@
 import './App.css'
-import Keyboard from "./components/Keyboard.tsx";
+import Keyboard from "@src/keyboard/components/Keyboard.tsx";
 
 function App() {
   return <Keyboard />

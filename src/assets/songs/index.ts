@@ -1,19 +1,7 @@
-import { songSet } from './equinox';
+import {equinox} from "@src/assets/songs/equinox";
+import {Song} from "@src/assets/songs/song.types.ts";
 
-export interface SongSet {
-  [songPart: string]: string
-}
 
-export class Song {
-  songName: string
-  mapping: Record<string, SongSet> = {
-    equinox: songSet
-  }
-  constructor(songName: string) {
-    this.songName = songName;
-  }
-
-  getSongSet() {
-    return this.mapping[this.songName];
-  }
+export const Songs: Record<string, Song> = {
+  equinox: equinox
 }
