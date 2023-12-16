@@ -1,25 +1,47 @@
 import {Songs} from "@src/assets/songs";
 import React from "react";
-import {codeSequence} from "@src/keyboard/utils.ts";
-import {Song} from "@src/assets/songs/song.types.ts";
+import {KEY_CODES, EMPTY_SONG_TRACK_MAPPING} from "@src/keyboard/utils.ts";
+import {KeySoundMapping, Song, SongSet} from "@src/assets/songs/song.types.ts";
 
-export function useSong(songName: string, set: number) {
-  const songTrackMapping: Record<string, Howl> = {}
-  const song: Song = Songs[songName];
+
+export function useSong(songName: string) {
+  const [songTrackMapping, setSongTrackMapping ] = React.useState<Record<SongSet, KeySoundMapping>>(EMPTY_SONG_TRACK_MAPPING)
+  const [song, setSong] = React.useState<Song>();
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    console.log(set)
-    song.loadAudioTracks();
-    console.log(song.audioTrackMapping)
+    if (songName) {
+      setSong(Songs[songName]);
+    }
+  }, [songName])
 
-    codeSequence.map((code, index) => {
-      songTrackMapping[code] = song.audioTrackMapping[set][index]
-    });
+  React.useEffect(() => {
+    setLoading(true);
+    song?.loadAudioTracks();
+    loadSongTrackMapping();
+    setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [set, song]);
+  }, [song])
+
+
+  function loadSongTrackMapping() {
+    const newSongTrackMapping: Record<SongSet, KeySoundMapping> = EMPTY_SONG_TRACK_MAPPING
+
+    if (song) {
+      KEY_CODES.map((code, index) => {
+        newSongTrackMapping[1][code] = song.audioTrackMapping[1][index]
+        newSongTrackMapping[2][code] = song.audioTrackMapping[2][index]
+        newSongTrackMapping[3][code] = song.audioTrackMapping[3][index]
+        newSongTrackMapping[4][code] = song.audioTrackMapping[4][index]
+      });
+    }
+
+    setSongTrackMapping(newSongTrackMapping);
+  }
 
   return {
-    songName: song.name,
+    song,
+    loading,
     songTrackMapping
   }
 }

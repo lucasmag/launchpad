@@ -2,7 +2,8 @@ import {Song} from "@src/assets/songs/song.types.ts";
 
 
 class EquinoxSong extends Song {
-  name = "Skrillex - Equinox"
+  code = "equinox";
+  name = "Skrillex - First Of The Year (Equinox)"
   filename = "equinox";
   mapping: Record<number, string[]> = {
     1: [
@@ -30,6 +31,12 @@ class EquinoxSong extends Song {
       'c12','c15','',   '','d8', 'd9', 'd10','d11','','','',''
     ]
   };
+  linkedKeys: Record<number, number[]> = {
+    1: [0, 12, 13, 24, 25, 36],
+    2: [0, 1, 2, 3, 4, 12, 15, 16, 24, 26, 27, 28, 37,38, 39, 40],
+    3: [4, 5, 6, 7, 16, 17,18, 19, 28, 29, 30, 31, 40, 42, 43],
+    4: [7, 18, 19, 28, 29, 30, 31, 40, 41, 42, 43],
+  }
 }
 
 export const equinox = new EquinoxSong();

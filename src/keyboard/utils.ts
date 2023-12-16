@@ -1,16 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import {KeySoundMapping, SongSet} from "@src/assets/songs/song.types.ts";
+
 export function zip(...arrays: any[]) {
   return arrays[0].map((_: any, i: any) => arrays.map(array => array[i]));
 }
 
-export const keySequence: string[] = [
+export const EMPTY_SONG_TRACK_MAPPING: Record<SongSet, KeySoundMapping> = {1: {}, 2: {}, 3: {}, 4:{}};
+
+
+export const KEYBOARD_KEYS: string[] = [
   '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
   'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']',
   'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\'', 'Enter',
   'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift', '',
 ]
 
-export const codeSequence: string[] = [
+export const KEY_CODES: string[] = [
   'Digit1',
   'Digit2',
   'Digit3',
@@ -63,4 +69,24 @@ export const codeSequence: string[] = [
   'ShiftRight',
   'IntlRo'
 ]
-export const keyToCodeMapping: Record<string, string> = zip(keySequence, codeSequence);
+export const keyToCodeMapping: Record<string, string> = (() => {
+  const mapping: Record<string, string> = {}
+  KEYBOARD_KEYS.map((key, index) => {
+    mapping[key] = KEY_CODES[index]
+  })
+  return mapping;
+})();
+
+export const KEY_ROWS = [
+  KEYBOARD_KEYS.slice(0, 12),
+  KEYBOARD_KEYS.slice(12, 24),
+  KEYBOARD_KEYS.slice(24, 36),
+  KEYBOARD_KEYS.slice(36,),
+]
+
+export const SONG_KEY_SET_MAPPING: Record<string, SongSet> = {
+  'ArrowUp': 2,
+  'ArrowLeft': 1,
+  'ArrowDown': 3,
+  'ArrowRight': 4,
+};
