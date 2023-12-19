@@ -13,11 +13,10 @@ export default function Keyboard() {
 
   const {song, loading, songTrackMapping} = useSong(songName as string);
   const {songSet, pressedKeys} = useBindKeyboardSong(songTrackMapping, song);
+  const goToSongList = () => navigate('/song-list')
 
   React.useEffect(() => {
-    if (!songName) {
-      navigate('/song-list')
-    }
+    if (!songName) goToSongList()
   }, []);
 
   if (loading) {
@@ -26,6 +25,9 @@ export default function Keyboard() {
 
   return (
     <div className="flex flex-col gap-20">
+      <button onClick={goToSongList}>
+        Back
+      </button>
       <h1 className="font-black text-2xl">{song?.name}</h1>
       <div className="keyboard">
         {KEY_ROWS.map((row, rowIndex) =>
