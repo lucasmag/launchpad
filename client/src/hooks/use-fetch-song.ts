@@ -1,5 +1,5 @@
 import React from "react";
-import {SERVER_URL} from "@src/keyboard/config.ts";
+import {SERVER_URL} from "@src/common/config.ts";
 import JSZip from "jszip";
 import {Howl} from "howler";
 import {SongSet} from "@src/common/songs/song.types.ts";
@@ -48,7 +48,7 @@ export function useFetchSong(songName: string) {
 
   function constructAudioTrackMapping(fileByName: Record<string, Blob>) {
     setState('loading');
-    console.log(fileByName)
+
     const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {1: {}, 2: {}, 3: {}, 4: {}};
     Object.entries(fileByName).map(([filename, blob]) => {
       const {songSet, soundName} = extractSongSetAndSoundName(filename)
@@ -74,6 +74,7 @@ export function useFetchSong(songName: string) {
   React.useEffect(() => {
     if (!songName) return;
 
+    console.log("Loading song files...")
     prepareSong();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songName]);

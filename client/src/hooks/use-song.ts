@@ -1,8 +1,8 @@
 import {Songs} from "@src/common/songs";
 import React from "react";
-import {KEY_CODES, EMPTY_SONG_TRACK_MAPPING} from "@src/keyboard/utils.ts";
+import {KEY_CODES, EMPTY_SONG_TRACK_MAPPING} from "@src/common/utils.ts";
 import {KeySoundMapping, Song, SongSet} from "@src/common/songs/song.types.ts";
-import {useFetchSong} from "@src/keyboard/hooks/use-fetch-song.ts";
+import {useFetchSong} from "@src/hooks/use-fetch-song.ts";
 
 
 export function useSong(songName: string) {
@@ -17,11 +17,15 @@ export function useSong(songName: string) {
   }, [songName])
 
   React.useEffect(() => {
-    if (!song || !soundFilesByFilename) return;
+    const soundFilesReady = Object.values(soundFilesByFilename).every(
+      (files) => Object.keys(files).length > 0
+    );
+    if (!song || !soundFilesReady) return;
 
     song?.loadAudioTracks(soundFilesByFilename);
     loadSongTrackMapping();
 
+    console.log("Song is ready!")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [song, soundFilesByFilename])
 
