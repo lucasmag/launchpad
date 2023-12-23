@@ -1,6 +1,6 @@
 import {Songs} from "@src/common/songs";
 import React from "react";
-import {KEY_CODES, EMPTY_SONG_TRACK_MAPPING} from "@src/common/utils.ts";
+import {KEY_CODES, EMPTY_SONG_TRACK_MAPPING} from "@src/common/consts.ts";
 import {KeySoundMapping, Song, SongSet} from "@src/common/songs/song.types.ts";
 import {useFetchSong} from "@src/hooks/use-fetch-song.ts";
 

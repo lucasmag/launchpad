@@ -1,5 +1,5 @@
 import React from "react";
-import {KEY_CODES, SONG_KEY_SET_MAPPING} from "@src/common/utils.ts";
+import {KEY_CODES, SONG_KEY_SET_MAPPING} from "@src/common/consts.ts";
 import {Howl} from "howler";
 import {useKeyboardInput} from "@src/hooks/use-keyboard-input.ts";
 import {KeySoundMapping, Song, SongSet} from "@src/common/songs/song.types.ts";

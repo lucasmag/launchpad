@@ -8,6 +8,8 @@ import {useBindKeyboardSong} from "@src/hooks/use-bind-keyboard-song.ts";
 import Keyboard from "@src/components/Keyboard.component";
 import SongSetSelector from "@src/components/SongSetSelector.component";
 import Button from "@src/shared/components/Button.tsx";
+import {LOAD_STATUS} from "@src/common/consts.ts";
+import {useFadeInAnimation} from "@src/hooks/use-animation.ts";
 
 export default function Play() {
   const navigate = useNavigate();
@@ -16,19 +18,20 @@ export default function Play() {
   const {song, state, error, songTrackMapping} = useSong(songName as string);
   const {songSet, pressedKeys} = useBindKeyboardSong(songTrackMapping, song);
   const goToSongList = () => navigate('/song-list')
+  useFadeInAnimation('.songName', 0.7);
 
   React.useEffect(() => {
     if (!songName) goToSongList()
   }, []);
 
   if (state !== 'done') {
-    return <div className="font-black text-2xl">{error || state}...</div>
+    return <div className="font-black text-2xl">{error || LOAD_STATUS[state]}...</div>
   }
 
   return (
     <div className="flex flex-col gap-20">
       <Button onClick={goToSongList}> Back </Button>
-      <h1 className="font-black text-2xl">{song?.name}</h1>
+      <h1 className="opacity-0 songName font-black text-2xl">{song?.name}</h1>
 
       <Keyboard pressedKeys={pressedKeys} />
       <SongSetSelector songSet={songSet} />

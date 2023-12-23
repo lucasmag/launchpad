@@ -6,16 +6,26 @@
     @apply flex flex-row gap-2 font-bold;
 }
 
-.keyboard-key {
+.key {
     @apply flex items-center justify-center rounded-2xl p-4 w-16 aspect-square;
     background-color: #2c2c2c;
 }
 
 .key-pressed {
-    filter: drop-shadow(0 0 8px rgba(227, 208, 134, 0.8));
+    filter: drop-shadow(0 0 8px rgba(229, 215, 164, 0.8));
     background-color: #4d4d4d;
 }
 
 .current-key-set {
     background-color: #3f3f3f;
+}
+
+@keyframes stagger {
+    0% { transform: translateY(12px); opacity: 0}
+    100% { transform: translateY(0px); opacity: 1}
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
 }

@@ -20,7 +20,7 @@ export default function SongSelection() {
       <div className="flex flex-col gap-5">
         {
           songs.map((song) => (
-            <button className="px-10 py-5 rounded-2xl bg-[#2c2c2c] border-2 hover:border-green-700" key={song.code} onClick={() => playSong(song.code)}>
+            <button className="px-10 py-5 rounded-2xl bg-[#2c2c2c]" key={song.code} onClick={() => playSong(song.code)}>
 
               <h5 className="font-bold">{song.name}</h5>
             </button>

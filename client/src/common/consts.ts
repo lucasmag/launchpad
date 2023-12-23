@@ -90,3 +90,21 @@ export const SONG_KEY_SET_MAPPING: Record<string, SongSet> = {
   'ArrowDown': 3,
   'ArrowRight': 4,
 };
+
+export enum LoadState {
+  INITIALIZING = 'initializing',
+  DOWNLOADING = 'downloading',
+  EXTRACTING = 'extracting',
+  MAPPING = 'mapping',
+  DONE = 'done',
+}
+
+
+
+export const LOAD_STATUS: Record<LoadState, string> = {
+  [LoadState.INITIALIZING]: 'Initializing',
+  [LoadState.DOWNLOADING]: 'Downloading song files',
+  [LoadState.EXTRACTING]: 'Extracting sounds',
+  [LoadState.MAPPING]: 'Mapping sounds to keys',
+  [LoadState.DONE]: 'Done',
+}
