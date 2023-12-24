@@ -16,13 +16,13 @@ export default function SongSelection() {
 
   return (
     <div className="flex flex-col gap-20">
-      <h1 className="font-black text-xl">Choose a song to play</h1>
+      <h1 className="text-2xl font-bold">Choose a song to play</h1>
       <div className="flex flex-col gap-5">
         {
           songs.map((song) => (
             <button className="px-10 py-5 rounded-2xl bg-[#2c2c2c]" key={song.code} onClick={() => playSong(song.code)}>
 
-              <h5 className="font-bold">{song.name}</h5>
+              <h2 className="tracking-wide">{song.name}</h2>
             </button>
           ))
         }

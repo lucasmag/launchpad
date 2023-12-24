@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('./assets/fonts/LeagueGothic-Regular.ttf') format('truetype');
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('./assets/fonts/LeagueGothic_Condensed-Regular.ttf') format('truetype');
+    font-stretch: condensed;
+}
+
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('./assets/fonts/LeagueGothic_SemiCondensed-Regular.ttf') format('truetype');
+    font-stretch: semi-condensed;
+}
+
+/* -------------- */
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url('./assets/fonts/LeagueSpartan-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url('./assets/fonts/LeagueSpartan-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'LeagueSpartan';
+    src: url('./assets/fonts/LeagueSpartan-Thin.ttf') format('truetype');
+    font-weight: 200;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -71,4 +109,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-

@@ -69,13 +69,11 @@ export const KEY_CODES: string[] = [
   'ShiftRight',
   'IntlRo'
 ]
-export const keyToCodeMapping: Record<string, string> = (() => {
-  const mapping: Record<string, string> = {}
-  KEYBOARD_KEYS.map((key, index) => {
-    mapping[key] = KEY_CODES[index]
-  })
-  return mapping;
-})();
+
+export const keyToCodeMapping: Record<string, string> = KEYBOARD_KEYS.reduce((accumulator, key, index) => {
+  accumulator[key] = KEY_CODES[index];
+  return accumulator;
+}, {} as Record<string, string>);
 
 export const KEY_ROWS = [
   KEYBOARD_KEYS.slice(0, 12),
@@ -91,7 +89,7 @@ export const SONG_KEY_SET_MAPPING: Record<string, SongSet> = {
   'ArrowRight': 4,
 };
 
-export enum LoadState {
+export enum SongLoadState {
   INITIALIZING = 'initializing',
   DOWNLOADING = 'downloading',
   EXTRACTING = 'extracting',
@@ -101,10 +99,10 @@ export enum LoadState {
 
 
 
-export const LOAD_STATUS: Record<LoadState, string> = {
-  [LoadState.INITIALIZING]: 'Initializing',
-  [LoadState.DOWNLOADING]: 'Downloading song files',
-  [LoadState.EXTRACTING]: 'Extracting sounds',
-  [LoadState.MAPPING]: 'Mapping sounds to keys',
-  [LoadState.DONE]: 'Done',
+export const SONG_LOAD_STATE: Record<SongLoadState, string> = {
+  [SongLoadState.INITIALIZING]: 'Initializing',
+  [SongLoadState.DOWNLOADING]: 'Downloading song files',
+  [SongLoadState.EXTRACTING]: 'Extracting sounds',
+  [SongLoadState.MAPPING]: 'Mapping sounds to keys',
+  [SongLoadState.DONE]: 'Done',
 }

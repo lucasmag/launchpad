@@ -4,7 +4,6 @@ import {Song} from './song.types.ts';
 class KnifePartySong extends Song {
   code = 'knifeparty';
   name = 'GHET1 - Knife Party vs Skrillex'
-  filename = 'knifeparty';
   mapping: Record<number, string[]> = {
     1: [
       '', 'c10', '', '', 'd14', 'd13', 'd12', 'b0', 'b1', 'b2', 'e3', 'b3',

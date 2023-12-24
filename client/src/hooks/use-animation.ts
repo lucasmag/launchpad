@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function useStaggeringAnimation(className: string) {
+export function useStaggeredAnimation(className: string) {
   React.useEffect(() => {
     const nodes: NodeListOf<HTMLDivElement> = document.querySelectorAll(className);
 
@@ -10,7 +10,7 @@ export function useStaggeringAnimation(className: string) {
         div.style.opacity = '1';
       }, index * 10);
     });
-  }, []);
+  }, [className]);
 }
 
 export function useFadeInAnimation(className: string, delay: number) {
@@ -25,5 +25,5 @@ export function useFadeInAnimation(className: string, delay: number) {
         }, index * 10);
       });
     }, delay * 1000);
-  }, []);
+  }, [className, delay]);
 }

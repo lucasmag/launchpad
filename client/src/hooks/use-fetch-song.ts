@@ -3,29 +3,33 @@ import {SERVER_URL} from "@src/common/config.ts";
 import JSZip from "jszip";
 import {Howl} from "howler";
 import {SongSet} from "@src/common/songs/song.types.ts";
-import {LoadState} from "@src/common/consts.ts";
+import {SongLoadState} from "@src/common/consts.ts";
+import {Songs} from "@src/common/songs";
 
 
 
-export function useFetchSong(songName: string) {
-  const [state, setState] = React.useState<LoadState>(LoadState.INITIALIZING);
+export function useFetchSong() {
+  const [state, setState] = React.useState<SongLoadState>(SongLoadState.INITIALIZING);
   const [error, setError] = React.useState<string | null>(null);
-  const [soundFilesByFilename, setSoundFilesByFilename] = React.useState<Record<SongSet, Record<string, Howl>>>({1: {}, 2: {}, 3: {}, 4: {}});
+  // const [soundFilesByFilename, setSoundFilesByFilename] = React.useState<Record<SongSet, Record<string, Howl>>>({1: {}, 2: {}, 3: {}, 4: {}});
 
-  async function fetchSong(songName: string): Promise<JSZip> {
-    setState(LoadState.DOWNLOADING);
+  async function fetchSongZip(songName: string): Promise<JSZip> {
+    setState(SongLoadState.DOWNLOADING);
 
-    const response = await fetch(`${SERVER_URL}/songs/${songName}`);
-    if (!response.ok) {
-      setError(await response.text());
-      throw new Error('Error fetching file');
-    }
+    const response = await fetch(`${SERVER_URL}/songs/${songName}`).catch(error => {
+
+      if (error.name === TypeError.name) {
+        setError('Unable to reach server at the moment. Try again later');
+      }
+
+      throw error;
+    });
 
     return await JSZip.loadAsync(response.blob());
   }
 
   async function createFileByNameMapping(zip: JSZip) {
-    setState(LoadState.EXTRACTING);
+    setState(SongLoadState.EXTRACTING);
 
     const fileByName: Record<string, Blob> = {};
     const keys = Object.keys(zip.files);
@@ -48,7 +52,7 @@ export function useFetchSong(songName: string) {
   }
 
   function constructAudioTrackMapping(fileByName: Record<string, Blob>) {
-    setState(LoadState.MAPPING);
+    setState(SongLoadState.MAPPING);
 
     const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {1: {}, 2: {}, 3: {}, 4: {}};
     Object.entries(fileByName).map(([filename, blob]) => {
@@ -63,22 +67,19 @@ export function useFetchSong(songName: string) {
     return audioTrackMapping;
   }
 
-  async function prepareSong() {
-    const zip = await fetchSong(songName);
+  async function fetchSong(songName: string) {
+    console.log("Loading song files...");
+
+    const zip = await fetchSongZip(songName);
     const fileByName = await createFileByNameMapping(zip);
     const audioTrackMapping = constructAudioTrackMapping(fileByName);
 
-    setSoundFilesByFilename(audioTrackMapping);
-    setState(LoadState.DONE);
+    const song = Songs[songName];
+    song.loadAudioTracks(audioTrackMapping);
+    setState(SongLoadState.DONE);
+
+    return song
   }
 
-  React.useEffect(() => {
-    if (!songName) return;
-
-    console.log("Loading song files...")
-    prepareSong();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [songName]);
-
-  return { soundFilesByFilename, state, error };
+  return { fetchSong, state, error };
 }

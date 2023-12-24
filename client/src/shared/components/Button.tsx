@@ -10,7 +10,7 @@ export default function Button(props: ButtonProps) {
   const {children, ...rest} = props;
 
   return (
-    <button className="w-fit" {...rest}>
+    <button className="flex items-center gap-3 justify-center w-fit" {...rest}>
       {children}
     </button>
   );

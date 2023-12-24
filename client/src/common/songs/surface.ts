@@ -4,7 +4,6 @@ import {Song} from './song.types.ts';
 class SurfaceSong extends Song {
   code = 'surface';
   name = 'Aero Chord - Surface'
-  filename = 'surface';
   mapping: Record<number, string[]> = {
     1: [
       'b0', 'b1', 'b2', 'b3', 'c0', 'a0', '',   'c3', 'd0', 'd1', 'd2', 'd3',

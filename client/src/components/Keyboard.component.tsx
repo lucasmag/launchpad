@@ -1,11 +1,11 @@
 import {keyToCodeMapping, KEY_ROWS} from "@src/common/consts.ts";
-import {useStaggeringAnimation} from "@src/hooks/use-animation.ts";
+import {useStaggeredAnimation} from "@src/hooks/use-animation.ts";
 
 import "./styles.css"
 
 export default function Keyboard(props: {pressedKeys: string[]}) {
   const {pressedKeys} = props;
-  useStaggeringAnimation('.keyboard-key');
+  useStaggeredAnimation('.keyboard-key');
 
   return (
     <div className="keyboard">

@@ -4,7 +4,6 @@ import {Song} from './song.types.ts';
 class KyotoSong extends Song {
   code = 'kyoto';
   name = 'Skrillex - Kyoto'
-  filename = 'kyoto';
   mapping: Record<number, string[]> = {
     1: [
       'a4','a8','a5', 'a14','a2', 'a15','','',  'b5', 'b6', 'b7', 'b4',

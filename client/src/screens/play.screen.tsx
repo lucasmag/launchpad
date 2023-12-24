@@ -8,30 +8,34 @@ import {useBindKeyboardSong} from "@src/hooks/use-bind-keyboard-song.ts";
 import Keyboard from "@src/components/Keyboard.component";
 import SongSetSelector from "@src/components/SongSetSelector.component";
 import Button from "@src/shared/components/Button.tsx";
-import {LOAD_STATUS} from "@src/common/consts.ts";
+import {SONG_LOAD_STATE} from "@src/common/consts.ts";
 import {useFadeInAnimation} from "@src/hooks/use-animation.ts";
+import ChevronLeft from "@src/shared/icons/chevron-left.tsx";
 
 export default function Play() {
-  const navigate = useNavigate();
-  const songName = useSelector((state: RootState) => state.song.name);
-
-  const {song, state, error, songTrackMapping} = useSong(songName as string);
-  const {songSet, pressedKeys} = useBindKeyboardSong(songTrackMapping, song);
-  const goToSongList = () => navigate('/song-list')
   useFadeInAnimation('.songName', 0.7);
+  const navigate = useNavigate();
+
+  const songName = useSelector((state: RootState) => state.song.name);
+  const {song, state, error} = useSong(songName as string);
+  const {songSet, pressedKeys} = useBindKeyboardSong(song);
+  const goToSongList = React.useCallback(() => navigate('/song-list'), [navigate])
 
   React.useEffect(() => {
     if (!songName) goToSongList()
-  }, []);
+  }, [songName, goToSongList]);
 
   if (state !== 'done') {
-    return <div className="font-black text-2xl">{error || LOAD_STATUS[state]}...</div>
+    return <div className="font-black text-2xl">{error || SONG_LOAD_STATE[state]}...</div>
   }
 
   return (
     <div className="flex flex-col gap-20">
-      <Button onClick={goToSongList}> Back </Button>
-      <h1 className="opacity-0 songName font-black text-2xl">{song?.name}</h1>
+      <Button onClick={goToSongList}>
+        <ChevronLeft />
+        <span className="mb-0.5">Back</span>
+      </Button>
+      <h1 className="opacity-0 songName font-black text-xl">{song?.name}</h1>
 
       <Keyboard pressedKeys={pressedKeys} />
       <SongSetSelector songSet={songSet} />
