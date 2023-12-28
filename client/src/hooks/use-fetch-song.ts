@@ -5,6 +5,9 @@ import {Howl} from "howler";
 import {SongSet} from "@src/common/songs/song.types.ts";
 import {SongLoadState} from "@src/common/consts.ts";
 import {Songs} from "@src/common/songs";
+import {LocalSong, saveSong} from "@src/state/songSlice.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "@src/state/store.ts";
 
 
 
@@ -12,6 +15,8 @@ export function useFetchSong() {
   const [state, setState] = React.useState<SongLoadState>(SongLoadState.INITIALIZING);
   const [error, setError] = React.useState<string | null>(null);
   // const [soundFilesByFilename, setSoundFilesByFilename] = React.useState<Record<SongSet, Record<string, Howl>>>({1: {}, 2: {}, 3: {}, 4: {}});
+  const dispatch = useDispatch();
+  const localSongs = useSelector((state: RootState) => state.song.songs);
 
   async function fetchSongZip(songName: string): Promise<JSZip> {
     setState(SongLoadState.DOWNLOADING);
@@ -51,28 +56,54 @@ export function useFetchSong() {
     return {songSet: songSet ? parseInt(songSet) as SongSet : null, soundName};
   }
 
-  function constructAudioTrackMapping(fileByName: Record<string, Blob>) {
+  function constructAudioTrackMapping(songName: string, fileByName: Record<string, Blob>) {
     setState(SongLoadState.MAPPING);
 
+    const saveSoundOnState: LocalSong = {1: {}, 2: {}, 3: {}, 4: {}}
     const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {1: {}, 2: {}, 3: {}, 4: {}};
-    Object.entries(fileByName).map(([filename, blob]) => {
+
+    Object.entries(fileByName).forEach(([filename, blob]) => {
       const {songSet, soundName} = extractSongSetAndSoundName(filename)
       if (!soundName || !songSet) return;
 
       const fileURL = URL.createObjectURL(blob);
+      saveSoundOnState[songSet][soundName] = fileURL;
+
       audioTrackMapping[songSet][soundName] = new Howl({
         src: [fileURL], format: ['mp3']
       });
     })
+
+    dispatch(saveSong({[songName]: saveSoundOnState}));
     return audioTrackMapping;
   }
 
-  async function fetchSong(songName: string) {
-    console.log("Loading song files...");
+  function loadAudioTrackMappingFromState(songName: string) {
+    if (!Object.keys(localSongs).includes(songName)) return null;
 
+    setState(SongLoadState.MAPPING);
+    console.info('Song tracks already loaded, remapping sounds from state...');
+    const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {1: {}, 2: {}, 3: {}, 4: {}};
+
+    Object.entries(localSongs[songName]).forEach(([songSet, soundURLMapping]) => {
+      Object.entries(soundURLMapping).forEach(([soundName, fileURL]) => {
+        audioTrackMapping[parseInt(songSet) as SongSet][soundName] = new Howl({src: [fileURL], format: ['mp3']});
+      });
+    });
+
+    return audioTrackMapping;
+  }
+
+  async function loadAudioTrackMappingFromServer(songName: string) {
     const zip = await fetchSongZip(songName);
     const fileByName = await createFileByNameMapping(zip);
-    const audioTrackMapping = constructAudioTrackMapping(fileByName);
+    return constructAudioTrackMapping(songName, fileByName);
+  }
+
+  async function fetchSong(songName: string) {
+    const audioTrackMapping: Record<SongSet, Record<string, Howl>> = (
+      loadAudioTrackMappingFromState(songName) || await loadAudioTrackMappingFromServer(songName)
+    )
 
     const song = Songs[songName];
     song.loadAudioTracks(audioTrackMapping);

@@ -1,11 +1,9 @@
 import {keyToCodeMapping, KEY_ROWS} from "@src/common/consts.ts";
-import {useStaggeredAnimation} from "@src/hooks/use-animation.ts";
 
 import "./styles.css"
 
 export default function Keyboard(props: {pressedKeys: string[]}) {
   const {pressedKeys} = props;
-  useStaggeredAnimation('.keyboard-key');
 
   return (
     <div className="keyboard">
@@ -15,7 +13,8 @@ export default function Keyboard(props: {pressedKeys: string[]}) {
             row.map((key, columnIndex) =>
               <div
                 key={columnIndex}
-                className={`opacity-0 keyboard-key key ${pressedKeys?.includes(keyToCodeMapping[key]) ? 'key-pressed' : ''}`}
+                style={{animationDelay: `${(rowIndex * 12 + columnIndex) * 10}ms`}}
+                className={`opacity-0 animate-stagger key ${pressedKeys?.includes(keyToCodeMapping[key]) ? 'key-pressed' : ''}`}
               >
                 {key}
               </div>

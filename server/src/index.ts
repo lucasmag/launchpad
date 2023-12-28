@@ -16,7 +16,7 @@ app.get('/songs/:songName', (req: express.Request, res: express.Response) => {
   const readStream = fs.createReadStream(filePath);
 
   readStream.on('error', (err) => {
-    console.log(`Error reading file: ${err}`);
+    console.error(`Error reading file: ${err}`);
     res.status(500).send(`Error loading song ${songName}`);
   })
 
@@ -28,5 +28,5 @@ app.get('/songs/:songName', (req: express.Request, res: express.Response) => {
 })
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`)
+  console.info(`Server listening on port ${port}`)
 })
