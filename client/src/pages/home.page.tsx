@@ -1,4 +1,4 @@
-import Button from "@src/shared/components/Button.tsx";
+import Button from "@src/shared/components/button/button.tsx";
 import {useNavigate} from "react-router-dom";
 
 

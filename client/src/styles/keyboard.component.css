@@ -1,0 +1,12 @@
+.keyboard {
+  @apply flex flex-col gap-2 text-lg font-semibold;
+}
+
+.keyboard-row {
+  @apply flex flex-row gap-2;
+}
+
+.key-pressed {
+  filter: drop-shadow(0 0 8px rgba(196, 186, 138, 0.6));
+  background-color: #464646 !important;
+}

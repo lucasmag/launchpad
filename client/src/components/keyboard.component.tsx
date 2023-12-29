@@ -1,6 +1,7 @@
 import {keyToCodeMapping, KEY_ROWS} from "@src/common/consts.ts";
 
-import "./styles.css"
+import "@src/styles/keyboard.component.css"
+import "@src/shared/style.css"
 
 export default function Keyboard(props: {pressedKeys: string[]}) {
   const {pressedKeys} = props;

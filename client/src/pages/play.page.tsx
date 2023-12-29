@@ -1,13 +1,13 @@
 import React from "react";
-import "../components/styles.css"
+import "../styles/keyboard.component.css"
 import {useSong} from "@src/hooks/use-song.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@src/state/store.ts";
 import {useNavigate} from "react-router-dom";
 import {useBindKeyboardSong} from "@src/hooks/use-bind-keyboard-song.ts";
-import Keyboard from "@src/components/Keyboard.component";
-import SongSetSelector from "@src/components/SongSetSelector.component";
-import Button from "@src/shared/components/Button.tsx";
+import Keyboard from "@src/components/keyboard.component.tsx";
+import SongSetSelector from "@src/components/songset-selector.component.tsx";
+import Button from "@src/shared/components/button/button.tsx";
 import {SONG_LOAD_STATE} from "@src/common/consts.ts";
 import ChevronLeft from "@src/shared/icons/chevron-left.tsx";
 import {setName} from "@src/state/songSlice.ts";
@@ -39,15 +39,20 @@ export default function Play() {
   }
 
   return (
-    <div className="flex flex-col gap-20">
-      <Button onClick={back}>
-        <ChevronLeft />
-        <span className="mb-0.5">Back</span>
-      </Button>
+    <div className="flex flex-col items-center gap-20">
+      <div className="w-full flex flex-col items-center gap-10">
+        <Button className="self-start border-indigo-500" onClick={back}>
+          <div className="flex items-center gap-3">
+            <ChevronLeft />
+            <span className="mb-0.5">Back</span>
+          </div>
+        </Button>
 
-      <h1 style={{animationDelay: '200ms'}} className="songName font-black text-xl opacity-0 animate-fadein">
-        {song?.name}
-      </h1>
+        <h1 style={{animationDelay: '200ms'}} className="font-black text-xl opacity-0 animate-fadein">
+          {song?.name}
+        </h1>
+      </div>
+
 
       <Keyboard pressedKeys={pressedKeys} />
       <SongSetSelector songSet={songSet} />

@@ -1,8 +1,7 @@
-import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SongSelection from "@src/screens/song-selection.screen.tsx";
-import Play from "@src/screens/play.screen.tsx";
-import {Home} from "@src/screens/home.screen.tsx";
+import SongSelection from "@src/pages/song-selection.page.tsx";
+import Play from "@src/pages/play.page.tsx";
+import {Home} from "@src/pages/home.page.tsx";
 
 function App() {
   return (

@@ -1,6 +1,8 @@
 import {SongSet} from "@src/common/songs/song.types.ts";
-import "./styles.css"
 import ChevronLeft from "@src/shared/icons/chevron-left.tsx";
+
+import "@src/styles/songset-selector.component.css"
+import "@src/shared/style.css"
 
 export default function SongSetSelector(props: {songSet: SongSet}) {
   const {songSet} = props;
