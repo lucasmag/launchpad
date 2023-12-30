@@ -3,7 +3,7 @@ import {Song} from "./song.types.ts";
 
 class EquinoxSong extends Song {
   code = "equinox";
-  name = "Skrillex - First Of The Year (Equinox) "
+  name = "Skrillex - First Of The Year (Equinox)"
   mapping: Record<number, string[]> = {
     1: [
       'c1','a0', 'a1', 'a2', 'a3', 'b0', 'b1', 'b2', 'b3', 'b3','d8','d12',

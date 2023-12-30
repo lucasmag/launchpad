@@ -10,7 +10,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@src/state/store.ts";
 
 
-
 export function useFetchSong() {
   const [state, setState] = React.useState<SongLoadState>(SongLoadState.INITIALIZING);
   const [error, setError] = React.useState<string | null>(null);
@@ -26,6 +25,8 @@ export function useFetchSong() {
       if (error.name === TypeError.name) {
         setError('Unable to reach server at the moment. Try again later');
       }
+
+      setError('Error downloading the file. Please, try again');
 
       throw error;
     });

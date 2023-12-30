@@ -70,7 +70,7 @@ export const KEY_CODES: string[] = [
   'IntlRo'
 ]
 
-export const keyToCodeMapping: Record<string, string> = KEYBOARD_KEYS.reduce((accumulator, key, index) => {
+export const KEY_TO_CODE_MAPPING: Record<string, string> = KEYBOARD_KEYS.reduce((accumulator, key, index) => {
   accumulator[key] = KEY_CODES[index];
   return accumulator;
 }, {} as Record<string, string>);
