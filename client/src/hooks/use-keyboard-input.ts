@@ -3,7 +3,7 @@ import React from "react";
 
 export function useKeyboardInput() {
   const [pressedKeys, setPressedKeys] = React.useState<string[]>([]);
-  const [processKeyCode, setProcessKeyCode] = React.useState<(key: string) => void>((_) => {});
+  const [processKeyCode, setProcessKeyCode] = React.useState<(key: string) => void>(() => {});
 
   function onKeyPress(func: (key: string) => void) {
     setProcessKeyCode(() => func);

@@ -14,6 +14,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'vitest/prefer-spy-on': 'off',
     'vitest/max-expects': 'off',
+    'vitest/no-hooks': 'off',
+    'vitest/require-hook': 'off',
+    'vitest/prefer-expect-assertions': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

@@ -8,27 +8,15 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^2.0.1
     version: 2.0.1(react-redux@9.0.4)(react@18.2.0)
-  '@rwh/keystrokes':
-    specifier: ^1.4.0
-    version: 1.4.0
-  '@rwh/react-keystrokes':
-    specifier: ^1.4.0
-    version: 1.4.0(@rwh/keystrokes@1.4.0)(react@18.2.0)
   '@types/howler':
     specifier: ^2.2.11
     version: 2.2.11
   '@types/jszip':
     specifier: ^3.4.1
     version: 3.4.1
-  hotkeys-js:
-    specifier: ^3.12.0
-    version: 3.12.0
   howler:
     specifier: ^2.2.4
     version: 2.2.4
-  install:
-    specifier: ^0.13.0
-    version: 0.13.0
   jszip:
     specifier: ^3.10.1
     version: 3.10.1
@@ -798,20 +786,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@rwh/keystrokes@1.4.0:
-    resolution: {integrity: sha512-yOvWnXSDP5zatwFmkGk3K5KADN/2TGne2Eg5hMEA6D/2jNL8H/r1v3zKzi2aNNwNaH7I/exl7vqViwFIKj4paw==}
-    dev: false
-
-  /@rwh/react-keystrokes@1.4.0(@rwh/keystrokes@1.4.0)(react@18.2.0):
-    resolution: {integrity: sha512-GJHKzQ3uJa/M0RH9igGUKd0upN8A6YUV/LCyEwTJ9ZsnaUqo4vWZQxJLqTb6X5/n6ntK1NByiu414ZVFwMR7zA==}
-    peerDependencies:
-      '@rwh/keystrokes': 1.4.0
-      react: '>=17'
-    dependencies:
-      '@rwh/keystrokes': 1.4.0
-      react: 18.2.0
-    dev: false
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -2391,10 +2365,6 @@ packages:
       function-bind: 1.1.2
     dev: true
 
-  /hotkeys-js@3.12.0:
-    resolution: {integrity: sha512-Z+N573ycUKIGwFYS3ID1RzMJiGmtWMGKMiaNLyJS8B1ei+MllF4ZYmKS2T0kMWBktOz+WZLVNikftEgnukOrXg==}
-    dev: false
-
   /howler@2.2.4:
     resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
     dev: false
@@ -2473,11 +2443,6 @@ packages:
 
   /inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
-
-  /install@0.13.0:
-    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
-    engines: {node: '>= 0.10'}
-    dev: false
 
   /internal-slot@1.0.6:
     resolution: {integrity: sha512-Xj6dv+PsbtwyPpEflsejS+oIZxmMlV44zAhG479uYu89MsjcYOhCFnNyKrkJrihbsiasQyY0afoCl/9BLR65bg==}

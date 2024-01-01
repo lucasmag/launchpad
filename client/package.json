@@ -6,19 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
-    "@rwh/keystrokes": "^1.4.0",
-    "@rwh/react-keystrokes": "^1.4.0",
     "@types/howler": "^2.2.11",
     "@types/jszip": "^3.4.1",
-    "hotkeys-js": "^3.12.0",
     "howler": "^2.2.4",
-    "install": "^0.13.0",
     "jszip": "^3.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

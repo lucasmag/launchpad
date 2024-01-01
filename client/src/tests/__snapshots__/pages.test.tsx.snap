@@ -1,0 +1,446 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test pages > should allow user to go to play screen 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center gap-20"
+  >
+    <div
+      class="w-full flex flex-col items-center gap-10"
+    >
+      <button
+        class="_button self-start border-indigo-500"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <svg
+            fill="none"
+            height="14"
+            viewBox="8 5 8 14"
+            width="8"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span
+            class="mb-0.5"
+          >
+            Back
+          </span>
+        </div>
+      </button>
+      <h1
+        class="font-black text-xl opacity-0 animate-fadein"
+        style="animation-delay: 200ms;"
+      >
+        Skrillex - Kyoto
+      </h1>
+    </div>
+    <div
+      class="keyboard"
+    >
+      <div
+        class="keyboard-row"
+      >
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 0ms;"
+        >
+          1
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 10ms;"
+        >
+          2
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 20ms;"
+        >
+          3
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 30ms;"
+        >
+          4
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 40ms;"
+        >
+          5
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 50ms;"
+        >
+          6
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 60ms;"
+        >
+          7
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 70ms;"
+        >
+          8
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 80ms;"
+        >
+          9
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 90ms;"
+        >
+          0
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 100ms;"
+        >
+          -
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 110ms;"
+        >
+          =
+        </div>
+      </div>
+      <div
+        class="keyboard-row"
+      >
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 120ms;"
+        >
+          Q
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 130ms;"
+        >
+          W
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 140ms;"
+        >
+          E
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 150ms;"
+        >
+          R
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 160ms;"
+        >
+          T
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 170ms;"
+        >
+          Y
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 180ms;"
+        >
+          U
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 190ms;"
+        >
+          I
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 200ms;"
+        >
+          O
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 210ms;"
+        >
+          P
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 220ms;"
+        >
+          [
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 230ms;"
+        >
+          ]
+        </div>
+      </div>
+      <div
+        class="keyboard-row"
+      >
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 240ms;"
+        >
+          A
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 250ms;"
+        >
+          S
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 260ms;"
+        >
+          D
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 270ms;"
+        >
+          F
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 280ms;"
+        >
+          G
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 290ms;"
+        >
+          H
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 300ms;"
+        >
+          J
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 310ms;"
+        >
+          K
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 320ms;"
+        >
+          L
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 330ms;"
+        >
+          ;
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 340ms;"
+        >
+          '
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 350ms;"
+        >
+          Enter
+        </div>
+      </div>
+      <div
+        class="keyboard-row"
+      >
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 360ms;"
+        >
+          Z
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 370ms;"
+        >
+          X
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 380ms;"
+        >
+          C
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 390ms;"
+        >
+          V
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 400ms;"
+        >
+          B
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 410ms;"
+        >
+          N
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 420ms;"
+        >
+          M
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 430ms;"
+        >
+          ,
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 440ms;"
+        >
+          .
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 450ms;"
+        >
+          /
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 460ms;"
+        >
+          Shift
+        </div>
+        <div
+          class="opacity-0 animate-stagger key "
+          style="animation-delay: 470ms;"
+        />
+      </div>
+    </div>
+    <div
+      id="songset-selector"
+    >
+      <div
+        class="relative key "
+      >
+        <div
+          class="key-indicator"
+        >
+          3
+        </div>
+        <svg
+          class="rotate-90"
+          fill="none"
+          height="14"
+          viewBox="8 5 8 14"
+          width="8"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+      <div
+        class="flex gap-2"
+      >
+        <div
+          class="relative key current-key-set"
+        >
+          <div
+            class="key-indicator"
+          >
+            1
+          </div>
+          <svg
+            fill="none"
+            height="14"
+            viewBox="8 5 8 14"
+            width="8"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div
+          class="relative key "
+        >
+          <div
+            class="key-indicator"
+          >
+            4
+          </div>
+          <svg
+            class="-rotate-90"
+            fill="none"
+            height="14"
+            viewBox="8 5 8 14"
+            width="8"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <div
+          class="relative key "
+        >
+          <div
+            class="key-indicator"
+          >
+            2
+          </div>
+          <svg
+            class="rotate-180"
+            fill="none"
+            height="14"
+            viewBox="8 5 8 14"
+            width="8"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.2426 6.34317L14.8284 4.92896L7.75739 12L14.8285 19.0711L16.2427 17.6569L10.5858 12L16.2426 6.34317Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
