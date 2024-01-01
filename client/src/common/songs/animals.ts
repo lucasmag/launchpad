@@ -4,6 +4,7 @@ import {Song} from './song.types.ts';
 class AnimalsSong extends Song {
   code = 'animals';
   name = 'Martin Garrix - Animals'
+  // prettier-ignore
   mapping: Record<number, string[]> = {
     1: [
       "a0", "a1", "a2", "a3", "c0", "","b0", "b1", "b2", "b3", "d12","d13",

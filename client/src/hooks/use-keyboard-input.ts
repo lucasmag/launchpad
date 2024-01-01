@@ -1,29 +1,35 @@
-import React from "react";
-
+import React from 'react';
 
 export function useKeyboardInput() {
   const [pressedKeys, setPressedKeys] = React.useState<string[]>([]);
-  const [processKeyCode, setProcessKeyCode] = React.useState<(key: string) => void>(() => {});
+  const [processKeyCode, setProcessKeyCode] = React.useState<
+    (key: string) => void
+  >(() => {});
 
   function onKeyPress(func: (key: string) => void) {
     setProcessKeyCode(() => func);
   }
 
-  const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
-    event.preventDefault();
-    if (event.repeat) return;
+  const handleKeyDown = React.useCallback(
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      if (event.repeat) return;
 
-    processKeyCode(event.code);
+      processKeyCode(event.code);
 
-    const key = event.code;
-    if (!pressedKeys.includes(key)) {
-      setPressedKeys((prevKeys) => [...prevKeys, key]);
-    }
-  }, [pressedKeys, processKeyCode]);
+      const key = event.code;
+      if (!pressedKeys.includes(key)) {
+        setPressedKeys((prevKeys) => [...prevKeys, key]);
+      }
+    },
+    [pressedKeys, processKeyCode],
+  );
 
   const handleKeyUp = React.useCallback((event: KeyboardEvent) => {
     event.preventDefault();
-    setPressedKeys((prevKeys) => prevKeys.filter((pressedKey) => pressedKey !== event.code));
+    setPressedKeys((prevKeys) =>
+      prevKeys.filter((pressedKey) => pressedKey !== event.code),
+    );
   }, []);
 
   React.useEffect(() => {
@@ -35,9 +41,10 @@ export function useKeyboardInput() {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [handleKeyDown, handleKeyUp])
+  }, [handleKeyDown, handleKeyUp]);
 
   return {
-    pressedKeys, onKeyPress
-  }
+    pressedKeys,
+    onKeyPress,
+  };
 }

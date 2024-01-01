@@ -1,6 +1,5 @@
-import Button from "@src/shared/components/button/button.tsx";
-import {useNavigate} from "react-router-dom";
-
+import Button from '@src/shared/components/button/button.tsx';
+import { useNavigate } from 'react-router-dom';
 
 export function Home() {
   const navigate = useNavigate();

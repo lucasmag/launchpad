@@ -1,23 +1,21 @@
 #songset-selector {
-    @apply opacity-0 animate-fadein flex flex-col items-center gap-2 leading-4;
-    animation-delay: 600ms;
+  @apply opacity-0 animate-fadein flex flex-col items-center gap-2 leading-4;
+  animation-delay: 600ms;
 
-    .key-indicator {
-        @apply font-bold flex items-center justify-center absolute -left-1 -top-1 w-6 aspect-square rounded-full;
-        background-color: rgba(140, 140, 140, 0.1);
-    }
+  .key-indicator {
+    @apply font-bold flex items-center justify-center absolute -left-1 -top-1 w-6 aspect-square rounded-full;
+    background-color: rgba(140, 140, 140, 0.1);
+  }
 }
-
-
 
 .current-key-set {
   background-color: #3f3f3f;
   filter: drop-shadow(0 0 8px rgba(196, 186, 138, 0.25));
 
-    .key-indicator {
-      /*border-width: 1px;*/
-      background-color: #535bf2 !important;
-      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-      border-color: #989898;
-    }
+  .key-indicator {
+    /*border-width: 1px;*/
+    background-color: #535bf2 !important;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+    border-color: #989898;
+  }
 }

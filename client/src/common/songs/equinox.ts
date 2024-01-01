@@ -1,9 +1,9 @@
-import {Song} from "./song.types.ts";
-
+import { Song } from './song.types.ts';
 
 class EquinoxSong extends Song {
-  code = "equinox";
-  name = "Skrillex - First Of The Year (Equinox)"
+  code = 'equinox';
+  name = 'Skrillex - First Of The Year (Equinox)';
+  // prettier-ignore
   mapping: Record<number, string[]> = {
     1: [
       'c1','a0', 'a1', 'a2', 'a3', 'b0', 'b1', 'b2', 'b3', 'b3','d8','d12',
@@ -32,10 +32,10 @@ class EquinoxSong extends Song {
   };
   linkedKeys: Record<number, number[]> = {
     1: [0, 12, 13, 24, 25, 36],
-    2: [0, 1, 2, 3, 4, 12, 15, 16, 24, 26, 27, 28, 37,38, 39, 40],
-    3: [4, 5, 6, 7, 16, 17,18, 19, 28, 29, 30, 31, 40, 42, 43],
+    2: [0, 1, 2, 3, 4, 12, 15, 16, 24, 26, 27, 28, 37, 38, 39, 40],
+    3: [4, 5, 6, 7, 16, 17, 18, 19, 28, 29, 30, 31, 40, 42, 43],
     4: [7, 18, 19, 28, 29, 30, 31, 40, 41, 42, 43],
-  }
+  };
 }
 
 export const equinox = new EquinoxSong();

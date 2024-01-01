@@ -11,6 +11,9 @@
     "test": "vitest run",
     "prettier": "prettier --check '**/*.{ts,tsx,jsx,js,css,html}'"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@types/howler": "^2.2.11",

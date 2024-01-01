@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from 'vitest/config';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,6 +9,6 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/tests/vitest.setup.ts',
-    includeSource: ['src/**/*.{js,ts}'], 
-  }
+    includeSource: ['src/**/*.{js,ts}'],
+  },
 });

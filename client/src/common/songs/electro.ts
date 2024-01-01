@@ -1,10 +1,10 @@
-import {Song} from "./song.types.ts";
-
+import { Song } from './song.types.ts';
 
 class ElectroSong extends Song {
-  code = "electro";
-  name = "SUBFER - Electro Mashup"
-  filename = "electro";
+  code = 'electro';
+  name = 'SUBFER - Electro Mashup';
+  filename = 'electro';
+  // prettier-ignore
   mapping: Record<number, string[]> = {
     1: [
       "c12","c13","b0", "b1", "b2", "b3", "b13","a7", "a0", "a1", "a2", "a3",
@@ -36,7 +36,7 @@ class ElectroSong extends Song {
     2: [],
     3: [],
     4: [20, 10, 22, 23, 34],
-  }
+  };
 }
 
 export const electro = new ElectroSong();
