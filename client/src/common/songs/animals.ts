@@ -1,9 +1,8 @@
-import {Song} from './song.types.ts';
-
+import { Song } from './song.types.ts';
 
 class AnimalsSong extends Song {
   code = 'animals';
-  name = 'Martin Garrix - Animals'
+  name = 'Martin Garrix - Animals';
   // prettier-ignore
   mapping: Record<number, string[]> = {
     1: [
@@ -31,7 +30,7 @@ class AnimalsSong extends Song {
     2: [],
     3: [],
     4: [],
-  }
+  };
 }
 
 export const animals = new AnimalsSong();

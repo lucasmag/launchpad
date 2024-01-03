@@ -7,6 +7,7 @@ import {
 import { Howl } from 'howler';
 import { useKeyboardInput } from '@src/hooks/use-keyboard-input.ts';
 import { Song, SongSet } from '@src/common/songs/song.types.ts';
+
 export function useBindKeyboardSong(song?: Song) {
   const { pressedKeys, onKeyPress } = useKeyboardInput();
   const [songSet, setSongSet] = React.useState<SongSet>(1);
@@ -22,18 +23,16 @@ export function useBindKeyboardSong(song?: Song) {
 
   const resolveLinkedKeys = React.useCallback(
     (keyCode: string) => {
-      if (song?.linkedKeys[songSet].includes(KEY_CODES.indexOf(keyCode))) {
-        if (linkedKeyPlaying.current) {
-          linkedKeyPlaying.current.stop();
-          linkedKeyPlaying.current.off();
-        }
+      if (!song?.linkedKeys[songSet].includes(KEY_CODES.indexOf(keyCode)))
+        return;
 
-        linkedKeyPlaying.current = currentKeySoundMapping[keyCode];
+      if (linkedKeyPlaying.current) linkedKeyPlaying.current.stop().off();
 
-        currentKeySoundMapping[keyCode].once('end', () => {
-          linkedKeyPlaying.current = null;
-        });
-      }
+      linkedKeyPlaying.current = currentKeySoundMapping[keyCode];
+
+      currentKeySoundMapping[keyCode].once('end', () => {
+        linkedKeyPlaying.current = null;
+      });
     },
     [songSet, currentKeySoundMapping, song?.linkedKeys],
   );
@@ -71,8 +70,8 @@ export function useBindKeyboardSong(song?: Song) {
           if (sound?.playing()) sound?.fade(1, 0, 2000);
         });
       });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
