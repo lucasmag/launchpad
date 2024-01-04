@@ -1,16 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { KeySoundMapping, SongSet } from '@src/common/songs/song.types.ts';
+import { SongSet } from '@src/common/songs/song.types.ts';
 
 export function zip(...arrays: any[]) {
   return arrays[0].map((_: any, i: any) => arrays.map((array) => array[i]));
 }
 
-export const EMPTY_SONG_TRACK_MAPPING: Record<SongSet, KeySoundMapping> = {
-  1: {},
-  2: {},
-  3: {},
-  4: {},
+export const createEmptySongSetMapping: () => Record<
+  SongSet,
+  Record<any, any>
+> = () => {
+  return {
+    ...{
+      1: {},
+      2: {},
+      3: {},
+      4: {},
+    },
+  };
 };
 
 export const KEYBOARD_KEYS: string[] = [

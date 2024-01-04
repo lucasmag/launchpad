@@ -3,7 +3,10 @@ import { SERVER_URL } from '@src/common/config.ts';
 import JSZip from 'jszip';
 import { Howl } from 'howler';
 import { SongSet } from '@src/common/songs/song.types.ts';
-import { SongLoadState } from '@src/common/consts.ts';
+import {
+  createEmptySongSetMapping,
+  SongLoadState,
+} from '@src/common/consts.ts';
 import { Songs } from '@src/common/songs';
 import { LocalSong, saveSong } from '@src/state/songSlice.ts';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +17,6 @@ export function useFetchSong() {
     SongLoadState.INITIALIZING,
   );
   const [error, setError] = React.useState<string | null>(null);
-  // const [soundFilesByFilename, setSoundFilesByFilename] = React.useState<Record<SongSet, Record<string, Howl>>>({1: {}, 2: {}, 3: {}, 4: {}});
   const dispatch = useDispatch();
   const localSongs = useSelector((state: RootState) => state.song.songs);
 
@@ -68,13 +70,11 @@ export function useFetchSong() {
   ) {
     setState(SongLoadState.MAPPING);
 
-    const saveSoundOnState: LocalSong = { 1: {}, 2: {}, 3: {}, 4: {} };
-    const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {
-      1: {},
-      2: {},
-      3: {},
-      4: {},
-    };
+    const saveSoundOnState: LocalSong = createEmptySongSetMapping();
+    const audioTrackMapping: Record<
+      SongSet,
+      Record<string, Howl>
+    > = createEmptySongSetMapping();
 
     Object.entries(fileByName).forEach(([filename, blob]) => {
       const { songSet, soundName } = extractSongSetAndSoundName(filename);
@@ -97,13 +97,13 @@ export function useFetchSong() {
     if (!Object.keys(localSongs).includes(songName)) return null;
 
     setState(SongLoadState.MAPPING);
-    console.info('Song tracks already loaded, remapping sounds from state...');
-    const audioTrackMapping: Record<SongSet, Record<string, Howl>> = {
-      1: {},
-      2: {},
-      3: {},
-      4: {},
-    };
+    console.info(
+      `Song tracks already loaded for ${songName.toUpperCase()}, remapping sounds from state...`,
+    );
+    const audioTrackMapping: Record<
+      SongSet,
+      Record<string, Howl>
+    > = createEmptySongSetMapping();
 
     Object.entries(localSongs[songName]).forEach(
       ([songSet, soundURLMapping]) => {

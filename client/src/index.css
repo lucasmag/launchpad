@@ -27,7 +27,7 @@
 }
 
 body {
-  @apply mx-auto h-full flex flex-col justify-center items-center;
+  @apply py-12 mx-auto min-h-full flex flex-col justify-center items-center;
   width: 1024px;
 }
 

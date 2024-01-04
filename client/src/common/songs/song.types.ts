@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { EMPTY_SONG_TRACK_MAPPING, KEY_CODES } from '@src/common/consts.ts';
+import { createEmptySongSetMapping, KEY_CODES } from '@src/common/consts.ts';
 
 export type SongSet = 1 | 2 | 3 | 4;
 export type KeySoundMapping = Record<string, Howl>;
@@ -32,7 +32,7 @@ export abstract class Song {
     }
 
     const newSongTrackMapping: Record<SongSet, KeySoundMapping> =
-      EMPTY_SONG_TRACK_MAPPING;
+      createEmptySongSetMapping();
 
     KEY_CODES.map((code, index) => {
       newSongTrackMapping[1][code] = this.audioTrackMapping[1][index];

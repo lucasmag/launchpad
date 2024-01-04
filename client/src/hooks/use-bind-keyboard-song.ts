@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  EMPTY_SONG_TRACK_MAPPING,
+  createEmptySongSetMapping,
   KEY_CODES,
   SONG_KEY_SET_MAPPING,
 } from '@src/common/consts.ts';
@@ -12,11 +12,11 @@ export function useBindKeyboardSong(song?: Song) {
   const { pressedKeys, onKeyPress } = useKeyboardInput();
   const [songSet, setSongSet] = React.useState<SongSet>(1);
   const songTrackMapping = React.useMemo(
-    () => song?.getSongTrackMapping() || EMPTY_SONG_TRACK_MAPPING,
+    () => song?.getSongTrackMapping() || createEmptySongSetMapping(),
     [song],
   );
   const currentKeySoundMapping = React.useMemo(
-    () => songTrackMapping[songSet] || EMPTY_SONG_TRACK_MAPPING[songSet],
+    () => songTrackMapping[songSet] || createEmptySongSetMapping()[songSet],
     [songSet, songTrackMapping],
   );
   const linkedKeyPlaying = React.useRef<Howl | null>(null);
