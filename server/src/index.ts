@@ -1,9 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import * as fs from "fs";
-import * as path from "path";
 import SongService from "@src/services/song.service";
 import {Readable} from "node:stream";
+import logger from "@src/config/logging";
 
 const app = express()
 const port = 3000
@@ -31,5 +30,5 @@ app.get('/hello', (req: express.Request, res: express.Response) => {
 })
 
 app.listen(port, () => {
-  console.info(`Server listening on port ${port}`)
+  logger.info(`Server listening on port ${port}`)
 })

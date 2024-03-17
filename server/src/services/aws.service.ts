@@ -1,4 +1,5 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import logger from "@src/config/logging";
 
 class NotFoundError extends Error {
   status: number
@@ -12,30 +13,22 @@ class NotFoundError extends Error {
 class AWSService {
   s3Client: S3Client = new S3Client({});
 
-  // async getBucketFiles(bucketName: string) {
-  //   try {
-  //     const data = await this.s3Client.send(new ListObjectsV2Command({ Bucket: bucketName }));
-  //     console.log(`Retrieved S3 files from ${bucketName}.`, data.Contents);
-  //
-  //   } catch (err) {
-  //     console.log(`Error retrieving S3 files from ${bucketName}`, err);
-  //   }
-  // }
-
   async getFileFromS3Bucket(bucketName: string, fileName: string) {
     let file;
 
     try {
+      logger.info(`Downloading '${fileName}' from S3 bucket '${bucketName}'...`);
       const data = await this.s3Client.send(new GetObjectCommand({ Bucket: bucketName, Key: fileName }));
       file = data.Body;
     } catch (err) {
-      console.log(`Error downloading '${fileName}' from S3 bucket '${bucketName}'`, err);
+      logger.error(`Error downloading '${fileName}' from S3 bucket '${bucketName}'`, err);
     }
 
     if (!file) {
       throw new NotFoundError(`${fileName} was not found on bucket ${bucketName}.`);
     }
 
+    logger.info(`Successfully downloaded '${fileName}' from S3 bucket '${bucketName}'`);
     return file;
   }
 }
