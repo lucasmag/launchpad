@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import * as fs from "fs";
 import * as path from "path";
+import SongService from "@src/services/song.service";
+import {Readable} from "node:stream";
 
 const app = express()
 const port = 3000
@@ -10,21 +12,22 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }));
 
-app.get('/songs/:songName', (req: express.Request, res: express.Response) => {
+interface SongRequest {
+  songName: string
+}
+
+app.get('/songs/:songName', async (req: express.Request<SongRequest>, res: express.Response) => {
   const songName: string = req.params.songName;
-  const filePath = path.join(__dirname, `/songs/${songName}.zip`);
-  const readStream = fs.createReadStream(filePath);
 
-  readStream.on('error', (err) => {
-    console.error(`Error reading file: ${err}`);
-    res.status(500).send(`Error loading song ${songName}`);
-  })
+  res.set('Content-Type', 'application/zip');
+  res.set('Content-Disposition', `attachment; filename=${songName}.zip`);
 
-  readStream.on('open', () => {
-    res.set('Content-Type', 'application/zip');
-    res.set('Content-Disposition', `attachment; filename=${songName}.zip`);
-    readStream.pipe(res);
-  });
+  const songFile = await SongService.getSongFile(songName) as Readable;
+  songFile.pipe(res);
+})
+
+app.get('/hello', (req: express.Request, res: express.Response) => {
+  res.send('Hello world!');
 })
 
 app.listen(port, () => {
