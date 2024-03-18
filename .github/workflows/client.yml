@@ -1,3 +1,5 @@
+name: Client Check
+
 on:
   push:
     branches: [ master ]
@@ -5,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  client-check:
+  check:
     defaults:
       run:
         working-directory: ./client
@@ -22,21 +24,3 @@ jobs:
       - run: pnpm prettier
       - run: pnpm tsc
       - run: pnpm test -- --silent
-
-  server-check:
-    defaults:
-      run:
-        working-directory: ./server
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm i -g pnpm
-      - run: pnpm i
-      - run: pnpm audit --prod
-      - run: pnpm lint
-      - run: pnpm prettier
-      - run: pnpm tsc
-#      - run: pnpm test -- --silent
