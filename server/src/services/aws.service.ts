@@ -1,8 +1,8 @@
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-import logger from "@src/config/logging";
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import logger from '@src/config/logging';
 
 class NotFoundError extends Error {
-  status: number
+  status: number;
   constructor(message: string) {
     super(message);
     this.name = 'NotFoundError';
@@ -17,18 +17,29 @@ class AWSService {
     let file;
 
     try {
-      logger.info(`Downloading '${fileName}' from S3 bucket '${bucketName}'...`);
-      const data = await this.s3Client.send(new GetObjectCommand({ Bucket: bucketName, Key: fileName }));
+      logger.info(
+        `Downloading '${fileName}' from S3 bucket '${bucketName}'...`,
+      );
+      const data = await this.s3Client.send(
+        new GetObjectCommand({ Bucket: bucketName, Key: fileName }),
+      );
       file = data.Body;
     } catch (err) {
-      logger.error(`Error downloading '${fileName}' from S3 bucket '${bucketName}'`, err);
+      logger.error(
+        `Error downloading '${fileName}' from S3 bucket '${bucketName}'`,
+        err,
+      );
     }
 
     if (!file) {
-      throw new NotFoundError(`${fileName} was not found on bucket ${bucketName}.`);
+      throw new NotFoundError(
+        `${fileName} was not found on bucket ${bucketName}.`,
+      );
     }
 
-    logger.info(`Successfully downloaded '${fileName}' from S3 bucket '${bucketName}'`);
+    logger.info(
+      `Successfully downloaded '${fileName}' from S3 bucket '${bucketName}'`,
+    );
     return file;
   }
 }

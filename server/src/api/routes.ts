@@ -1,5 +1,5 @@
-import {getSong, hello} from "@src/api/song";
-import {Router} from "express";
+import { getSong, hello } from '@src/api/song';
+import { Router } from 'express';
 
 const router = Router();
 
