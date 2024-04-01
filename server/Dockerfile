@@ -1,12 +1,17 @@
-FROM node:20-alpine
+FROM public.ecr.aws/lambda/nodejs:20 as builder
 
-WORKDIR /opt/app
+WORKDIR /usr/app
 RUN npm i -g pnpm
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml tsconfig.json ./
 RUN pnpm install
 
-COPY src/ .
-EXPOSE 3000
+COPY ./src ./src
+RUN pnpm run build
 
-CMD [ "pnpm", "dev"]
+FROM public.ecr.aws/lambda/nodejs:20
+WORKDIR ${LAMBDA_TASK_ROOT}
+COPY --from=builder /usr/app/dist ./
+COPY --from=builder /usr/app/node_modules ./node_modules
+
+CMD ["serverless.handler"]

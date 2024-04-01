@@ -23,7 +23,7 @@ class AWSService {
       const data = await this.s3Client.send(
         new GetObjectCommand({ Bucket: bucketName, Key: fileName }),
       );
-      file = data.Body;
+      file = data.Body?.transformToString('base64');
     } catch (err) {
       logger.error(
         `Error downloading '${fileName}' from S3 bucket '${bucketName}'`,

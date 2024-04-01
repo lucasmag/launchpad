@@ -6,7 +6,6 @@ resource "aws_lambda_function" "crons" {
   image_uri    = var.lambda_image_uri
 
   memory_size                    = 512
-  reserved_concurrent_executions = !var.is_review_environment ? 50 : 5
   timeout                        = 900
 
   tracing_config {
@@ -23,7 +22,7 @@ resource "aws_lambda_function" "crons" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 

@@ -8,6 +8,6 @@ services:
     entrypoint: >
       sh -c "pnpm dev"
     volumes:
-      - .:/opt/app
+      - .:/var/task
     ports:
       - "3000:3000"

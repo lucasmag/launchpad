@@ -8,7 +8,7 @@ resource "aws_cloudwatch_log_group" "lambda_api" {
   name = "/aws/lambda/${local.namespace}-api"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_log_group" "lambda_crons" {
   name = "/aws/lambda/${local.namespace}-crons"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 

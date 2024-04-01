@@ -6,7 +6,7 @@ resource "aws_ecr_repository" "ecr" {
     scan_on_push = true
   }
 
-  lifecycle { prevent_destroy = true }
+  lifecycle { prevent_destroy = false }
 }
 
 output "ecr_uri" {

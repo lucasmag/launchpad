@@ -11,7 +11,7 @@ resource "aws_security_group" "lambda" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  lifecycle { prevent_destroy = true }
+  lifecycle { prevent_destroy = false }
 }
 
 output "lambda_security_group" {

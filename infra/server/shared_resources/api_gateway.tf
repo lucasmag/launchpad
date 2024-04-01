@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "this" {
   name        = local.namespace
   description = "Forwards HTTP(S) requests to the Lambda function."
 
-  lifecycle { prevent_destroy = true }
+  lifecycle { prevent_destroy = false }
 }
 
 resource "aws_api_gateway_resource" "this" {

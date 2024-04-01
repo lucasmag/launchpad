@@ -17,7 +17,7 @@ resource "aws_cloudwatch_log_metric_filter" "successfully_downloaded_song" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -35,6 +35,6 @@ resource "aws_cloudwatch_log_metric_filter" "song_not_found" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }

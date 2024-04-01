@@ -25,12 +25,6 @@ resource "aws_api_gateway_deployment" "this" {
   rest_api_id = data.terraform_remote_state.shared_resources.outputs.api_gateway_id
 }
 
-resource "aws_api_gateway_base_path_mapping" "this" {
-  api_id      = data.terraform_remote_state.shared_resources.outputs.api_gateway_id
-  domain_name = local.api_gateway_custom_domain
-  stage_name  = aws_api_gateway_stage.this.stage_name
-}
-
 
 ####################
 # Monitoring

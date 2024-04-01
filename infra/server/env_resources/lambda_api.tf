@@ -6,7 +6,6 @@ resource "aws_lambda_function" "api" {
   image_uri    = var.lambda_image_uri
 
   memory_size                    = 512
-  reserved_concurrent_executions = local.lambda_reserved_concurrency
   timeout                        = 28
 
   tracing_config {
@@ -23,7 +22,7 @@ resource "aws_lambda_function" "api" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
 }
@@ -43,7 +42,7 @@ resource "aws_lambda_permission" "api_gateway" {
 
   source_arn = "${data.terraform_remote_state.shared_resources.outputs.api_gateway_exec_arn}/*/*"
 
-  lifecycle { prevent_destroy = true }
+  lifecycle { prevent_destroy = false }
 }
 
 ####################
