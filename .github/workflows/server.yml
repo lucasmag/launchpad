@@ -1,3 +1,5 @@
+name: Server Check
+
 on:
   push:
     branches: [ master ]
@@ -5,10 +7,10 @@ on:
     branches: [ master ]
 
 jobs:
-  client-check:
+  check:
     defaults:
       run:
-        working-directory: ./client
+        working-directory: ./server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,4 +23,3 @@ jobs:
       - run: pnpm lint
       - run: pnpm prettier
       - run: pnpm tsc
-      - run: pnpm test -- --silent

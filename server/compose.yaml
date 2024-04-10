@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  server:
+    image: keyjam
+    container_name: keyjam-server
+    build: .
+    entrypoint: >
+      sh -c "pnpm dev"
+    volumes:
+      - .:/var/task
+    ports:
+      - "3000:3000"

@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>KeyJam Administration</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+          "Lucida Sans", sans-serif;
+      }
+      .title {
+        margin-top: 30px;
+      }
+      .request {
+        margin-top: 5px;
+      }
+      .message {
+        margin-top: 0px;
+      }
+      .link {
+        margin-top: 10px;
+        width: 100%;
+      }
+      @media only screen and (max-width: 600px) {
+        .logo {
+          width: 80%;
+        }
+        .message {
+          width: 90%;
+        }
+      }
+      @media only screen and (min-width: 600px) {
+        .logo {
+          width: 60%;
+        }
+        .message {
+          width: 80%;
+        }
+      }
+      @media only screen and (min-width: 768px) {
+        .logo {
+          width: 50%;
+        }
+        .message {
+          width: 70%;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        .logo {
+          width: 25%;
+        }
+        .message {
+          width: 40%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="title">Timeout Error</h2>
+    <p class="request"><strong>Request ID: </strong>$context.requestId</p>
+    <p class="message">
+        Unfortunately, your request reached the timeout limit.
+        KeyJam team will get a notification and check what happened.
+        For pressing or recurring problems, reach out via ServiceNow.
+    </p>
+
+    <p><a href="/admin/" class="link">Back to KeyJam Admin</a></p>
+  </body>
+</html>

@@ -1,14 +1,14 @@
-import {createLogger, format, transports} from 'winston';
+import { createLogger, format, transports } from 'winston';
 
 const logger = createLogger({
   level: 'info',
   format: format.combine(
     format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss'
+      format: 'YYYY-MM-DD HH:mm:ss',
     }),
     format.errors({ stack: true }),
     format.splat(),
-    format.json()
+    format.json(),
   ),
   transports: [
     //
@@ -16,8 +16,8 @@ const logger = createLogger({
     // - Write all logs error (and below) to `quick-start-error.log`.
     //
     new transports.File({ filename: 'quick-start-error.log', level: 'error' }),
-    new transports.File({ filename: 'quick-start-combined.log' })
-  ]
+    new transports.File({ filename: 'quick-start-combined.log' }),
+  ],
 });
 
 //
@@ -25,12 +25,11 @@ const logger = createLogger({
 // with the colorized simple format.
 //
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new transports.Console({
-    format: format.combine(
-      format.colorize(),
-      format.simple()
-    )
-  }));
+  logger.add(
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  );
 }
 
 export default logger;
